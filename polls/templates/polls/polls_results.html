@@ -1,0 +1,29 @@
+{% extends 'polls/base.html' %}
+
+{% block content %}
+
+<h1>{{ question.question_text }}</h1>
+<br>
+<ul>
+
+    <table class="table table-sm table-hover">
+        <thead>
+          <tr class="table-success">
+            <th scope="col">Opções</th>
+            <th scope="col">Votos</th>
+          </tr>
+        </thead>
+    {% for choice in question.choice_set.all %}
+        <tbody>
+          <tr>
+            <td>{{ choice.choice_text }}</td>
+            <td>{{ choice.votes }}</td>
+          </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+
+<br>
+<a href="{% url 'polls:detail' question.id %}">Votar de novo?</a>
+
+{% endblock %}

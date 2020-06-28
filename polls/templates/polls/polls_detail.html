@@ -1,0 +1,39 @@
+{% extends 'polls/base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <div class="item mb-5">
+        <div class="media">
+            <img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="{% static 'images/thumb.png' %}" alt="image" style="width:60px;height:60px;">
+            <div class="media-body">
+                <h3 class="title mb-1">
+                    <h1>{{ question.question_text }}</h1>
+                    <div class="meta mb-1"><span class="date">Publicado em {{ question.pub_date }}</span></div>
+                    <br>
+
+                    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+                </h3>
+                <div class="intro">
+                    
+                    <form action="{% url 'polls:vote' question.id %}" method="post">
+                        {% csrf_token %}
+                        {% for choice in question.choice_set.all %}
+                            <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
+                            <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label>
+                            <br>
+                        {% endfor %}
+                        <br>
+                        <input type="submit" class="btn btn-outline-success" value="Vote">
+                        </form>
+
+                </div>
+            </div><!--//media-body-->
+        </div><!--//media-->
+    </div><!--//item--> 
+
+    
+    
+
+
+{% endblock %}

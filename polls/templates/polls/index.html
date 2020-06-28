@@ -1,0 +1,41 @@
+{% extends 'polls/base.html' %}
+{% load static %}
+
+{% block content %}
+
+    {% if latest_question_list %}
+        {% for question in latest_question_list %}
+
+            <div class="item mb-5">
+                <div class="media">
+                    <img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="{% static 'images/thumb.png' %}" alt="image" style="width:50px;height:50px;">
+                    <div class="media-body">
+                        <h3 class="title mb-1"><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></h3>
+                        <div class="meta mb-1"><span class="date">Publicado em {{ question.pub_date }}</span></div>
+                    </div><!--//media-body-->
+                </div><!--//media-->
+            </div><!--//item--> 
+        
+        {% endfor %}
+    {% else %}
+    
+    <div class="item mb-5">
+        <div class="media">
+            <img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="{% static 'images/none.png' %}" alt="image" style="width:50px;height:50px;">
+            <div class="media-body">
+                <h2 class="title mb-1">Não há perguntas</h2>
+                <div class="meta mb-1">Aguarde a próxima enquete...</div>
+            </div><!--//media-body-->
+        </div><!--//media-->
+    </div><!--//item--> 
+
+    {% endif %}
+
+
+   
+
+
+
+
+
+{% endblock %}
