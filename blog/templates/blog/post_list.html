@@ -1,0 +1,36 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+
+    {% if user.is_authenticated %}
+
+    <section class="promo-section theme-bg-light py-5 text-center">
+        
+            <form method="POST" class="post-form">{% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-outline-success">Postar</button>
+            </form>
+    </section>
+
+
+
+    <br><br>
+    {% endif %}
+
+    {% for post in posts %} 
+        <hr>
+                <div class="item mb-5">
+                    <div class="media"> 
+                        <div class="media-body">
+                            <h3 class="title mb-1"><a href="{% url 'blog:post_detail' pk=post.pk %}">{{ post.title }}</a></h3>
+                            <div class="meta mb-1"><span class="date">Publicado em {{ post.published_date }}</span><span><b>Autor: </b> {{ post.author }}</span></div>
+                            <div class="intro"><p>{{ post.text | linebreaksbr }}</p></div>
+                        </div><!--//media-body-->
+                    </div><!--//media-->
+                </div><!--//item--> 
+
+
+
+    {% endfor %}
+
+{% endblock %}
