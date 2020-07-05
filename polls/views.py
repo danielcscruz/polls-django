@@ -4,10 +4,13 @@ from django.urls import reverse
 
 from .models import Choice, Question
 
+
+titulo = "Enquetes"
+subtitulo = "Django Project"
 # Create your views here.
 def index(request):
     latest_question_list = Question.objects.order_by('-pub_date')[:5]
-    context = {'latest_question_list': latest_question_list}
+    context = {'latest_question_list': latest_question_list, 'titulo': titulo, 'subtitulo': subtitulo}
     return render(request, 'polls/index.html', context)
 
 def detail(request, question_id):
@@ -16,16 +19,16 @@ def detail(request, question_id):
         question = Question.objects.get(pk=question_id)
     except Question.DoesNotExist:
         raise Http404("Question does not exist")
-    return render(request, 'polls/polls_detail.html', {'question': question})
+    return render(request, 'polls/polls_detail.html', {'question': question, 'titulo': titulo, 'subtitulo': subtitulo})
 
 
 def results(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
-    return render(request, 'polls/polls_results.html', {'question': question})
+    return render(request, 'polls/polls_results.html', {'question': question, 'titulo': titulo, 'subtitulo': subtitulo})
 
 
 def vote(request, question_id):
-    return render(request, "polls/polls_vote.html", {"question_id":question_id})
+    return render(request, "polls/polls_vote.html", {"question_id":question_id, 'titulo': titulo, 'subtitulo': subtitulo})
 
 
 def vote(request, question_id):
@@ -37,6 +40,7 @@ def vote(request, question_id):
         return render(request, 'polls/polls_detail.html', {
             'question': question,
             'error_message': "Você não escolheu uma opção",
+             'titulo': titulo, 'subtitulo': subtitulo
         })
     else:
         selected_choice.votes += 1

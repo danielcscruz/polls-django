@@ -1,0 +1,41 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+
+{% for er in form.errors %}
+<div class="alert alert-danger" role="alert">
+    <p>{{ er }}</p>
+</div>
+{% endfor %}
+
+<div class="container">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-4">
+            <div class="card">
+                <div class="card-body">
+                    <form method="POST" action="" autocomplete="off">
+                        {% csrf_token %}
+                        {% for field in form %}
+                        <div class="form-group">
+                            {{ field.label}}
+                            {{ field }}
+                        </div>
+                        {% endfor %}
+
+
+                        <input type="submit" name="Create User" class="btn btn-primary">
+                    </form>
+
+                    <br>
+                    Já possui conta? <a href="{% url 'login_view' %}">Login</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
