@@ -16,7 +16,7 @@
                 </h3>
                 <div class="intro">
                     
-                    <form action="{% url 'polls:vote' question.id %}" method="post">
+                    <form action="{% url 'polls:vote' question.id %}" method="post" onsubmit="return confirm('Você gostaria de enviar o seu voto?');">
                         {% csrf_token %}
                         {% for choice in question.choice_set.all %}
                             <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
