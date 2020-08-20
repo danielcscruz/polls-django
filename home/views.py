@@ -12,7 +12,7 @@ titulo = "Projetos Django"
 subtitulo = "JCAVI"
 
 def index(request):
-    return render(request, 'home/index.html', { 'titulo': titulo, 'subtitulo': subtitulo})
+    return render(request, 'home/index.html', { 'titulo': titulo})
 
 def register(request):
     form = CreateUserForm()

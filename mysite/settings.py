@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'polls.apps.PollsConfig',
     'blog.apps.BlogConfig',
     'home.apps.HomeConfig',
+    'loto.apps.LotoConfig',
 ]
 
 MIDDLEWARE = [

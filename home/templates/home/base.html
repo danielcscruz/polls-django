@@ -27,7 +27,7 @@
 				<div class="profile-section pt-3 pt-lg-0">
 				    <img class="profile-image mb-3 rounded-circle mx-auto" src="{% static 'images/profile8bit.png' %}" alt="image" >			
 					
-                    <div class="bio mb-3"> Projetos da turma de Django JCAVI.<br>
+                    <div class="bio mb-3"> Projetos desenvolvidos em Django<br>
 
                     </div><!--//bio-->
 
@@ -46,6 +46,9 @@
                         </li>
                         <li class="nav-item active">
                             <a class="nav-link" href="/polls"><i class="fas fa-bookmark fa-fw mr-2"></i>Projeto 2: Enquete <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/loto"><i class="fas fa-bookmark fa-fw mr-2"></i>Projeto 3: Gerador de Aposta <span class="sr-only">(current)</span></a>
                         </li>
                     </ul>
                     <hr>
@@ -81,7 +84,7 @@
             <section class="cta-section theme-bg-light py-5">
                 <div class="container text-center">
                     <h2 class="heading">{{ titulo }}</h2>
-                    <div class="intro">Tutorial por <i>{{ subtitulo }}</i> </div>
+
   
                 </div><!--//container-->
             </section>
@@ -117,6 +120,8 @@
         <script src="{% static 'js/jquery-3.3.1.js' %}"></script> 
         <script src="{% static 'js/bootstrap.js' %}"></script> 
         <script src="{% static 'js/popper.js' %}"></script> 
+        <script src="{% static 'js/buttonjq.js' %}"></script> 
+        
         
     </body>
 </html>
